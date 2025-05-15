@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environments
+venv/
+venv_cp_kan/
+.venv/
+*/venv/
+
+# Results
+results*/
+js_grid_results_degradation/
+
+# Data - generally recommend users download their own datasets
+data/
+
+# Logs
+*.log
+
+# IDE & OS specific
+.vscode/
+.idea/
+.DS_Store
+.ipynb_checkpoints/ 
