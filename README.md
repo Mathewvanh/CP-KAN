@@ -44,13 +44,17 @@ This directory contains the code to run experiments comparing Fixed KAN models (
             kaggle competitions download -c jane-street-market-prediction -p data/jane-street/
             ```
         *   You will then need to unzip the `jane-street-market-prediction.zip` file into that directory.
-        *   The relevant file for the configurations is typically `train.csv`.
+        *   The primary data file is `train.csv`. However, the scripts are configured to accept a path to this `train.csv`, a single `.parquet` file, or a glob pattern like `your_directory_with_parquets/**/*.parquet` if you have converted/sharded the data.
     *   **MNIST, CIFAR-10, Housing, Forest Covertype:** These datasets are typically downloaded automatically by the scripts when first run, if not found locally in a `data/` subdirectory (e.g. `data/mnist`, `data/cifar10`).
 
 5.  **Configure Data Path in YAML**
-    *   Edit the desired configuration file in the `configs/` directory (e.g., `config_js_grid_search_degradation.yaml`).
-    *   Find the `data_path` key under the `dataset` section.
-    *   Replace the placeholder path (`"/path/to/your/jane_street/train.parquet/**/*.parquet"`) with the actual absolute path to your Jane Street `train.parquet` directory, ensuring you use the `/**/*.parquet` glob pattern to select only the necessary files.
+    *   Edit the desired configuration file in the `configs/` directory (e.g., one of the Jane Street configs).
+    *   Find the `data_path` key under the `dataset` section. It will look like `data_path: "data/jane_street/YOUR_JANE_STREET_TRAIN_FILE_OR_PATTERN"`.
+    *   Replace the placeholder with the actual path to your Jane Street data. 
+        *   Example for `train.csv`: `"data/jane-street/train.csv"`
+        *   Example for a single parquet file: `"data/jane-street/train.parquet"`
+        *   Example for multiple parquet files in a subdirectory: `"data/jane-street/my_parquet_files/**/*.parquet"`
+    *   For other datasets (MNIST, CIFAR-10, Housing, Covertype), the default `data_path: "./data"` in their respective configs should work if the data is auto-downloaded to a `data/` subdirectory within `CP-KAN`.
 
 ## Running Experiments
 
@@ -103,20 +107,20 @@ Here are commands to run some of the configurations (assuming execution from the
 
 *   **Jane Street Single Run (Best KAN Config):**
     ```bash
-    # Remember to update data_path in the config first! (e.g., to 'data/jane-street/train.csv')
+    # Remember to update data_path in the config first! (e.g., to 'data/jane-street/train.parquet')
     python main.py --config configs/experiments/jane_street/config_js_single_run_best_kan.yaml
     ```
 
 *   **Jane Street Optimization Method Comparison:**
     ```bash
-    # Remember to update data_path in the config first!
+    # Remember to update data_path in the config first! (e.g., to 'data/jane-street/train.parquet')
     python main.py --config configs/experiments/jane_street/config_js_opt_comparison.yaml
     ```
 
 *   **Jane Street Grid Search for Degradation Study:**
     ```bash
     # This generates the config for the degradation study
-    # Remember to update data_path in the config first!
+    # Remember to update data_path in the config first! (e.g., to 'data/jane-street/train.parquet')
     python main.py --config configs/experiments/jane_street/config_js_grid_search_degradation.yaml
     ```
 
@@ -127,7 +131,7 @@ Here are commands to run some of the configurations (assuming execution from the
 
 *   **Jane Street KAN Architecture Comparison:**
     ```bash
-    # Remember to update data_path in the config first!
+    # Remember to update data_path in the config first! (e.g., to 'data/jane-street/train.parquet')
     python main.py --config configs/comparisons/config_js_compare.yaml
     ```
 

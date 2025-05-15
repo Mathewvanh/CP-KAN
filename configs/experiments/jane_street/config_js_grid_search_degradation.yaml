@@ -9,7 +9,7 @@ results_dir: ./js_grid_results_degradation # <<< Specify results directory
 
 dataset:
   name: jane_street
-  data_path: "/Users/darklight/Interning/Kaggle/jane_street_kaggle/jane-street-real-time-market-data-forecasting/train.parquet/**/*.parquet" # <<< Path now includes glob pattern
+  data_path: "data/jane_street/YOUR_JANE_STREET_TRAIN_FILE_OR_PATTERN"  # <<< UPDATE THIS PATH >>>
   n_rows: 200000 # Adjust as needed
   train_ratio: 0.7 # Split for grid search training/validation
   feature_cols: auto # Use 'auto' or provide specific list

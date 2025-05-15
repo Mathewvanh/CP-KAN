@@ -9,8 +9,9 @@ methods_to_run: ["FixedKAN"] # Only FixedKAN needed
 dataset:
   name: "jane_street"
   task_type: "regression"
-  # <<< IMPORTANT: Replace with the actual path to your Jane Street train.parquet directory >>>
-  data_path: "/Users/darklight/Interning/Kaggle/jane_street_kaggle/jane-street-real-time-market-data-forecasting/train.parquet/**/*.parquet"
+  # <<< IMPORTANT: Update data_path to point to your Jane Street training data. >>>
+  # Example: "data/jane-street/train.parquet" or "data/jane-street/train_files/**/*.parquet"
+  data_path: "data/jane_street/YOUR_JANE_STREET_TRAIN_FILE_OR_PATTERN"  # <<< UPDATE THIS PATH >>>
   n_rows: 200000 # Use 200k rows consistent with other JS experiments (App C.1 Table 4)
   train_ratio: 0.7 # Use 0.7 train_ratio consistent with other JS experiments (App C.1 Table 4)
   feature_cols: "auto"

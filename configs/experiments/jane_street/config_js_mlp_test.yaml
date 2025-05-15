@@ -9,7 +9,7 @@ results_dir: ./js_mlp_test_results
 
 dataset:
   name: jane_street
-  data_path: "/Users/darklight/Interning/Kaggle/jane_street_kaggle/jane-street-real-time-market-data-forecasting/train.parquet/**/*.parquet"
+  data_path: "data/jane_street/YOUR_JANE_STREET_TRAIN_FILE_OR_PATTERN"
   n_rows: 200000
   train_ratio: 0.7
   feature_cols: auto
