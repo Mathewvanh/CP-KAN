@@ -20,7 +20,7 @@ This directory contains the code to run experiments comparing Fixed KAN models (
 
 1.  **Clone the Repository**
     ```bash
-    git clone <repository_url> # Replace <repository_url> with the actual URL of this repository
+    git clone https://github.com/Mathewvanh/CP-KAN.git
     cd CP-KAN 
     ```
 
